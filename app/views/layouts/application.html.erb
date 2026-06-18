@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HelloWorldApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <% if logged_in? %>
+        Logged in as <%= current_user.login %>
+
+        <% if admin_user? %>
+          | <%= link_to "Admin roles", admin_roles_path %>
+          | <%= link_to "Admin users", admin_users_path %>
+        <% else %>
+          | <%= link_to "View roles", users_roles_path %>
+          | <%= link_to "View users", users_users_path %>
+        <% end %>
+
+        | <%= button_to "Logout", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Login", login_path %>
+      <% end %>
+    </nav>
+
+    <% if notice.present? %>
+      <p style="color: green"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p style="color: red"><%= alert %></p>
+    <% end %>
+
+    <hr>
+
+    <%= yield %>
+    
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<% if role.errors.any? %>
+  <div>
+    <h2><%= pluralize(role.errors.count, "error") %> prevented this role from being saved:</h2>
+
+    <ul>
+      <% role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: [:admin, role]) do |form| %>
+  <div>
+    <%= form.label :code %><br>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :admin %>
+    <%= form.check_box :admin %>
+  </div>
+
+  <div>
+    <%= form.label :user %>
+    <%= form.check_box :user %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

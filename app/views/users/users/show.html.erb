@@ -1,0 +1,20 @@
+<h1>User details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Login:</strong>
+  <%= @user.login %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role.code %> - <%= @user.role.description %>
+</p>
+
+<p>
+  <%= link_to "Back to users", users_users_path %>
+</p>

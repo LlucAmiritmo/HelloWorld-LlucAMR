@@ -1,0 +1,25 @@
+<h1>Role details</h1>
+
+<p>
+  <strong>Code:</strong>
+  <%= @role.code %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @role.description %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @role.admin %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @role.user %>
+</p>
+
+<p>
+  <%= link_to "Back to roles", users_roles_path %>
+</p>

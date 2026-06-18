@@ -1,0 +1,48 @@
+<% if user.errors.any? %>
+  <div>
+    <h2><%= pluralize(user.errors.count, "error") %> prevented this user from being saved:</h2>
+
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: [:admin, user]) do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :login %><br>
+    <%= form.text_field :login %>
+  </div>
+
+  <div>
+    <%= form.label :role_id, "Role" %><br>
+    <%= form.collection_select :role_id, @roles, :id, :code, prompt: "Select a role" %>
+  </div>
+
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <% if user.persisted? %>
+    <p>
+      Leave password fields empty if you do not want to change the password.
+    </p>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
